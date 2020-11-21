@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 import os
+import argparse
 from PIL import Image
 
 
@@ -30,14 +33,22 @@ def fill2(path, new_path, img, x, y):
 
 
 def main():
-    dpath = 'pictures_4_3'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('source', nargs='?', default='.', help='source dir for pictures, default current dir')
+    parser.add_argument('target', nargs='?', default='pictures_4_3', help='target dir name for pictures, default pictures_4_3')
+    args = parser.parse_args()
+
+    os.chdir(args.source)
+    dpath = os.path.join(os.getcwd(), args.target)
     os.makedirs(dpath)
+
     for f in os.listdir('.'):
         filename = os.path.join(os.getcwd(), f)
         ext = filename.split('.')[-1]
         if ext.lower() not in ('jpg', 'jpeg', 'png'):
             continue
         fill(filename, dpath)
+        print('{} to {}'.format(filename, dpath))
 
 
 if __name__ == '__main__':
