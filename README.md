@@ -25,8 +25,13 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
-唉又升级了... 要用 macOS 啊... 得有 `sips`
+唉又升级了... 要用 macOS 啊... 得有 `sips`  
+先 `brew install python` 什么的把 python 环境整起来  
+然后
 
 ```
+$ pip install -r requirements.txt --index-url https://pypi.doubanio.com/simple/
 $ gunicorn app:app --bind 0.0.0.0:5000 --workers 4
 ```
+
+接下来打开 `localhost:5000` 就可以了
