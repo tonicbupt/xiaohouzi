@@ -24,3 +24,9 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
 ```
+
+唉又升级了... 要用 macOS 啊... 得有 `sips`
+
+```
+$ gunicorn app:app --bind 0.0.0.0:5000 --workers 4
+```
